@@ -17,7 +17,14 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
 }) => {
   const [hasError, setHasError] = useState(false);
 
-  // If the image loaded fine, render normal image
+  // If the image had an error, check if it's general or hero background
+  if (hasError) {
+    if (fallbackType === 'general') {
+      return null;
+    }
+  }
+
+  // If the image loaded fine or hasn't errored yet, render normal image
   if (!hasError && src) {
     return (
       <img

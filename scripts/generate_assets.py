@@ -50,8 +50,8 @@ os.makedirs('public/assets/products', exist_ok=True)
 with open('public/assets/logo.png', 'wb') as f:
     f.write(make_png(240, 240, (247, 147, 30), "circle", (58, 26, 10)))
 
-# 2. hero-bg.jpg (dark rustic chai background)
-with open('public/assets/hero-bg.jpg', 'wb') as f:
+# 2. hero-bg.png (dark rustic chai background)
+with open('public/assets/hero-bg.png', 'wb') as f:
     f.write(make_png(800, 600, (30, 14, 6), "square"))
 
 # 3. hero-cup.png (kulhad cup)

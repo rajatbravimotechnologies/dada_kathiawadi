@@ -13,17 +13,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
       id="home"
       className="relative min-h-[92vh] md:min-h-screen bg-[#241006] text-white pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden flex items-center"
     >
-      {/* Background Image with Dark Rustic Chai Scene and Warm Vignette */}
+      {/* Background Image without any overlay or filter */}
       <div className="absolute inset-0 z-0">
-        <ImageWithFallback
-          src="/assets/hero-bg.jpg"
+        <img
+          src="/assets/hero-bg.png"
           alt="Dada Kathiawadi Chai Background"
-          fallbackType="general"
-          className="w-full h-full object-cover opacity-35 filter brightness-75 scale-105"
+          className="w-full h-full object-cover object-center"
         />
-        {/* Warm rustic gradients */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1C0B03]/95 via-[#2E1408]/85 to-[#1C0B03]/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-600/15 via-transparent to-black/70" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -61,10 +57,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
           </div>
 
           {/* Center Column: Handwritten script note, 3-line Headline, Subtext, and CTA Buttons */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left pt-2 lg:pt-0">
+          <div className="lg:col-span-8 flex flex-col items-center lg:items-start text-center lg:text-left pt-2 lg:pt-0 lg:pl-6">
             
             {/* Handwritten Script Text with curved hand-drawn arrow */}
-            <div className="self-center lg:self-end lg:-mr-12 mb-2 lg:mb-3 flex items-center gap-2 transform -rotate-3 text-amber-100/90 font-script text-2xl sm:text-3xl tracking-wide select-none">
+            <div className="self-center lg:self-start mb-2 lg:mb-3 flex items-center gap-2 transform -rotate-3 text-amber-100/90 font-script text-2xl sm:text-3xl tracking-wide select-none">
               <span>Ek Ghunt…</span>
               <span className="text-[#FDE68A]">Kathiawad Ki Yaad</span>
               {/* Curved SVG Hand-Drawn Arrow */}
@@ -113,35 +109,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
               >
                 Enquire Now
               </button>
-            </div>
-          </div>
-
-          {/* Right Column: Kulhad Cup with Rising Steam Animation and Warm Glow */}
-          <div className="lg:col-span-4 flex justify-center items-center relative mt-6 lg:mt-0">
-            <div className="relative w-64 h-80 sm:w-80 sm:h-96 flex items-center justify-center">
-              
-              {/* Rising Steam CSS Curves */}
-              <div className="absolute -top-10 sm:-top-16 inset-x-0 flex justify-center pointer-events-none z-20">
-                {/* Steam Plume 1 */}
-                <div className="w-6 h-28 bg-gradient-to-t from-white/40 via-white/20 to-transparent rounded-full blur-md animate-steam-1 -mr-6"></div>
-                {/* Steam Plume 2 */}
-                <div className="w-8 h-32 bg-gradient-to-t from-white/50 via-white/25 to-transparent rounded-full blur-md animate-steam-2 mx-1"></div>
-                {/* Steam Plume 3 */}
-                <div className="w-7 h-28 bg-gradient-to-t from-white/40 via-white/20 to-transparent rounded-full blur-md animate-steam-3 -ml-4"></div>
-              </div>
-
-              {/* Kulhad Image with subtle glow */}
-              <div className="relative z-10 w-full h-full flex items-center justify-center animate-cup-glow">
-                <ImageWithFallback
-                  src="/assets/hero-cup.png"
-                  alt="Dada Kathiawadi Kulhad Chai with Rising Steam"
-                  fallbackType="hero-cup"
-                  className="w-full h-full object-contain filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)]"
-                />
-              </div>
-
-              {/* Background ambient circular glow */}
-              <div className="absolute w-72 h-72 rounded-full bg-amber-500/15 blur-2xl -z-10 pointer-events-none"></div>
             </div>
           </div>
 
