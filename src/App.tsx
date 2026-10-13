@@ -1,82 +1,56 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { OurStory } from './components/OurStory';
-import { FeatureStrip } from './components/FeatureStrip';
-import { Investment } from './components/Investment';
-import { WhatsIncluded } from './components/WhatsIncluded';
-import { ItemsModal } from './components/ItemsModal';
-import { Process } from './components/Process';
-import { EnquirySection } from './components/EnquirySection';
-import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { FranchisePage } from './pages/FranchisePage';
+import { WhatsIncludedPage } from './pages/WhatsIncludedPage';
+import { ProcessPage } from './pages/ProcessPage';
+import { FaqsPage } from './pages/FaqsPage';
+import { ContactPage } from './pages/ContactPage';
+
+// Scroll to top automatically on route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#FFF8EC] text-[#2B1408] flex flex-col font-sans selection:bg-[#F7931E]/30 selection:text-[#3A1A0A]">
-      {/* 1. Navbar */}
-      <Navbar onEnquireClick={() => scrollToSection('contact')} />
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-[#FFF3D9] text-[#292720] flex flex-col font-sans selection:bg-[#B87343]/30 selection:text-[#173F35]">
+        {/* Navigation Bar across all pages */}
+        <Navbar />
 
-      {/* Main Page Sections */}
-      <main className="flex-1">
-        {/* 1. Hero Section */}
-        <Hero
-          onExploreClick={() => scrollToSection('franchise')}
-          onEnquireClick={() => scrollToSection('contact')}
-        />
+        {/* Dynamic Route Pages */}
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/franchise" element={<FranchisePage />} />
+            <Route path="/included" element={<WhatsIncludedPage />} />
+            <Route path="/process" element={<ProcessPage />} />
+            <Route path="/faqs" element={<FaqsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* Catch-all fallback */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
 
-        {/* 2. Our Story Section */}
-        <OurStory onKnowMoreClick={() => scrollToSection('franchise')} />
+        {/* Global Footer */}
+        <Footer />
 
-        {/* 3. Feature Strip */}
-        <FeatureStrip />
-
-        {/* 4. Your Investment Section */}
-        <Investment
-          onViewIncludedClick={() => scrollToSection('included')}
-          onEnquireClick={() => scrollToSection('contact')}
-        />
-
-        {/* 5. What's Included Section */}
-        <WhatsIncluded onOpenModal={() => setIsModalOpen(true)} />
-
-        {/* 6. Process - Franchise Kaise Le? Section */}
-        <Process />
-
-        {/* 7. Enquiry Section */}
-        <EnquirySection />
-
-        {/* 8. FAQs Section */}
-        <FaqSection />
-      </main>
-
-      {/* 9. Footer */}
-      <Footer />
-
-      {/* Floating WhatsApp CTA */}
-      <FloatingWhatsApp />
-
-      {/* All 26 Items In Detail Modal */}
-      <ItemsModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onEnquireClick={() => scrollToSection('contact')}
-      />
-    </div>
+        {/* Global Floating WhatsApp Support Button */}
+        <FloatingWhatsApp />
+      </div>
+    </BrowserRouter>
   );
 }

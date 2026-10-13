@@ -47,17 +47,17 @@ export const ItemsModal: React.FC<ItemsModalProps> = ({
         aria-modal="true"
       >
         {/* Modal Header */}
-        <div className="p-5 sm:p-6 border-b border-[#F1E6D3] flex items-center justify-between bg-[#FFF8EC]">
+        <div className="p-5 sm:p-6 border-b border-[#B87343]/20 flex items-center justify-between bg-[#FFF3D9]">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-[11px] font-bold tracking-widest uppercase text-[#F7931E]">
+              <span className="text-[11px] font-bold tracking-widest uppercase text-[#B87343]">
                 COMPLETE FRANCHISE INVENTORY
               </span>
-              <span className="bg-[#F7931E]/15 text-[#B45309] font-bold text-xs px-2.5 py-0.5 rounded-full">
+              <span className="bg-[#173F35] text-[#FFF3D9] font-bold text-xs px-2.5 py-0.5 rounded-full">
                 26 Total Items
               </span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#2B1408]">
+            <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-[#173F35]">
               What's Included in ₹2,11,000 Package
             </h3>
           </div>

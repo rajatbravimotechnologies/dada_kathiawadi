@@ -106,38 +106,38 @@ export const EnquirySection: React.FC = () => {
 
   return (
     <section id="contact" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="bg-[#3A1A0A] rounded-3xl p-6 sm:p-10 lg:p-14 shadow-2xl border border-white/10 relative overflow-hidden">
+      <div className="bg-[#173F35] rounded-3xl p-6 sm:p-10 lg:p-14 shadow-2xl border border-[#B87343]/30 relative overflow-hidden">
         
         {/* Tea leaves and spice decorative textures */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-radial from-amber-600/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-radial from-[#B87343]/20 via-transparent to-transparent pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
           
           {/* Left Column: Heading and Chai Cup graphic */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <div>
-              <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#F7931E] mb-2 block">
+              <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#B87343] mb-2 block">
                 ENQUIRY
               </span>
 
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFF3D9] leading-tight mb-4">
                 Ready To Start
                 <br />
-                <span className="text-[#F7931E]">Your Chai Business?</span>
+                <span className="text-[#E6A76E]">Your Chai Business?</span>
               </h2>
 
-              <p className="text-xs sm:text-sm text-amber-100/80 leading-relaxed mb-8 max-w-md">
+              <p className="text-xs sm:text-sm text-[#FFF3D9]/80 leading-relaxed mb-8 max-w-md">
                 Apna naam aur location share karein. Hamari franchise team aapse package details
                 aur next steps ke liye contact karegi.
               </p>
 
               {/* Direct Helpline Badge */}
-              <div className="hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10 max-w-sm mb-6">
-                <div className="w-10 h-10 rounded-xl bg-[#F7931E]/20 text-[#F7931E] flex items-center justify-center shrink-0">
+              <div className="hidden sm:flex items-center gap-3 p-3.5 rounded-2xl bg-[#FFF3D9]/10 border border-[#B87343]/30 max-w-sm mb-6">
+                <div className="w-10 h-10 rounded-xl bg-[#B87343]/20 text-[#E6A76E] flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] text-amber-200/70 block uppercase tracking-wider font-semibold">
+                  <span className="text-[11px] text-[#FFF3D9]/70 block uppercase tracking-wider font-semibold">
                     Direct Franchise Helpline
                   </span>
                   <span className="text-sm font-bold text-white tracking-wide">
@@ -415,7 +415,7 @@ export const EnquirySection: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 bg-[#F7931E] hover:bg-[#e08215] text-[#2B1408] font-bold text-sm sm:text-base py-3 sm:py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.99] disabled:opacity-70"
+                      className="w-full flex items-center justify-center gap-2 bg-[#B87343] hover:bg-[#a36235] text-white font-bold text-sm sm:text-base py-3 sm:py-3.5 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-[0.99] disabled:opacity-70"
                     >
                       {isSubmitting ? (
                         <span>Submitting Enquiry...</span>

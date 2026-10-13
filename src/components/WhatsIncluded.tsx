@@ -30,31 +30,31 @@ export const WhatsIncluded: React.FC<WhatsIncludedProps> = ({ onOpenModal }) => 
       : FRANCHISE_PRODUCTS.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="included" className="py-20 md:py-28 bg-[#FFF8EC] relative">
+    <section id="included" className="py-20 md:py-28 bg-[#FFF3D9] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#F7931E] mb-2 block">
+            <span className="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#B87343] mb-2 block">
               FRANCHISE PACKAGE
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#2B1408] leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#173F35] leading-tight">
               What's Included in
               <br />
               ₹2,11,000 Package
             </h2>
-            <div className="w-14 h-1 bg-[#F7931E] rounded-full mt-3"></div>
+            <div className="w-14 h-1 bg-[#B87343] rounded-full mt-3"></div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 max-w-md">
-            <p className="text-xs sm:text-sm text-[#6B5A4B] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#292720]/80 leading-relaxed">
               A complete setup package with essential equipment and materials to start your Dada
               Kathiawadi Chai outlet.
             </p>
             <button
               onClick={onOpenModal}
-              className="shrink-0 flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#F7931E] hover:text-[#d97706] border border-[#F7931E] hover:border-[#d97706] hover:bg-[#F7931E]/5 px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95"
+              className="shrink-0 flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#B87343] hover:text-[#a36235] border border-[#B87343] hover:border-[#a36235] hover:bg-[#B87343]/10 px-4 py-2 rounded-full transition-all duration-200 whitespace-nowrap active:scale-95"
             >
               <span>View Complete List</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -72,8 +72,8 @@ export const WhatsIncluded: React.FC<WhatsIncludedProps> = ({ onOpenModal }) => 
                 onClick={() => setActiveCategory(category)}
                 className={`text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-200 whitespace-nowrap ${
                   isActive
-                    ? 'bg-[#F7931E] text-white shadow-md font-semibold'
-                    : 'bg-[#FFFDF8] text-[#6B5A4B] hover:text-[#2B1408] hover:bg-[#F1E6D3]/60 border border-[#F1E6D3]'
+                    ? 'bg-[#173F35] text-[#FFF3D9] shadow-md font-semibold'
+                    : 'bg-[#FFFDF8] text-[#292720]/80 hover:text-[#173F35] hover:bg-[#FFF3D9]/60 border border-[#B87343]/30'
                 }`}
               >
                 {category}
@@ -88,7 +88,7 @@ export const WhatsIncluded: React.FC<WhatsIncludedProps> = ({ onOpenModal }) => 
             <div
               key={item.id}
               onClick={onOpenModal}
-              className="bg-[#FFFDF8] border border-[#F1E6D3] rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#E5D2BA] group cursor-pointer"
+              className="bg-[#FFFDF8] border border-[#B87343]/20 rounded-2xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#B87343]/50 group cursor-pointer"
             >
               {/* Product Image Area */}
               <div className="aspect-square w-full rounded-xl bg-transparent flex items-center justify-center p-2 mb-3 overflow-hidden">
@@ -104,10 +104,10 @@ export const WhatsIncluded: React.FC<WhatsIncludedProps> = ({ onOpenModal }) => 
 
               {/* Product Info */}
               <div className="text-left">
-                <h4 className="font-semibold text-sm sm:text-base text-[#2B1408] leading-snug group-hover:text-[#F7931E] transition-colors">
+                <h4 className="font-semibold text-sm sm:text-base text-[#173F35] leading-snug group-hover:text-[#B87343] transition-colors">
                   {item.name}
                 </h4>
-                <p className="text-xs text-[#6B5A4B] mt-0.5 leading-tight">
+                <p className="text-xs text-[#292720]/75 mt-0.5 leading-tight">
                   {item.specs}
                 </p>
               </div>
