@@ -1,7 +1,5 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { ImageWithFallback } from './ImageWithFallback';
-import { HeroBackgroundVideo } from './HeroBackgroundVideo';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -12,97 +10,99 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] lg:min-h-screen bg-[#28140D] text-white pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden flex items-center"
+      className="relative min-h-[90svh] md:min-h-[94svh] lg:min-h-[96svh] bg-[#180B05] text-white pt-28 md:pt-36 lg:pt-32 pb-16 md:pb-24 overflow-hidden flex items-center"
     >
-      {/* Continuous Cinematic Beverage Background Video Sequence */}
-      <HeroBackgroundVideo posterImage="/assets/hero-bg.png" />
+      {/* Background Image & Cinematic Gradient Overlays */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+        <img
+          src="/assets/hero-bg.png"
+          alt="Dada Kathiawadi Chai Stall & Steaming Kulhad at Sunset"
+          className="w-full h-full object-cover object-[78%_center] sm:object-[74%_center] md:object-[70%_center] lg:object-[66%_center] xl:object-[64%_center] transition-all duration-700"
+          loading="eager"
+        />
+
+        {/* Subtle, soft natural gradient so the original sunset and lake remain bright and vivid */}
+        <div
+          className="absolute inset-0 pointer-events-none hidden md:block"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.15) 40%, transparent 65%)',
+          }}
+        />
+
+        {/* Mobile: Gentle subtle gradient ensuring text readability while keeping image bright */}
+        <div
+          className="absolute inset-0 pointer-events-none md:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.20) 45%, transparent 70%, rgba(0, 0, 0, 0.50) 100%)',
+          }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        {/* Left Content Column matching reference image */}
+        <div className="w-full md:max-w-xl lg:max-w-[50%] xl:max-w-[46%] flex flex-col justify-center text-left">
           
-          {/* Left Column: Brand Logo As-Is & Antique Gold Franchise Price Panel */}
-          <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-            {/* Original Brand Logo - Untouched */}
-            <div className="w-48 sm:w-56 lg:w-60 flex items-center justify-center">
-              <img
-                src="/assets/logo.png"
-                alt="Dada Kathiawadi Chai Logo"
-                className="w-full h-auto object-contain drop-shadow-xl"
-              />
-            </div>
-
-            {/* Refined Franchise Price Panel: Royal Forest Green (#173F32) with Antique Gold (#D6A84F) border */}
-            <div className="w-full max-w-[280px] bg-[#173F32]/95 backdrop-blur-md text-[#FFF5E5] rounded-xl sm:rounded-2xl p-5 shadow-2xl border border-[#D6A84F] transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-[#D6A84F]">
-                  FRANCHISE OPPORTUNITY
-                </span>
-                <span className="inline-block w-2 h-2 rounded-full bg-[#D6A84F] animate-pulse" />
-              </div>
-              <div className="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight text-[#FFF5E5] my-1">
-                ₹2,11,000
-              </div>
-              <p className="text-xs text-[#FFF5E5]/80 font-normal">
-                Complete Setup & 26 Essential Equipment
-              </p>
-            </div>
+          {/* Yellow Brush Badge: "Asli Swad, Desi Andaaz" */}
+          <div className="animate-hero-1 inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-sm bg-[#EBB036] text-[#241208] text-xs sm:text-sm font-black tracking-wide shadow-md transform -rotate-1 mb-3.5 sm:mb-4 select-none w-fit">
+            <span>Asli Swad, Desi Andaaz</span>
           </div>
 
-          {/* Right/Center Column: Editorial Headline & Actions */}
-          <div className="lg:col-span-8 flex flex-col items-center lg:items-start text-center lg:text-left pt-2 lg:pt-0">
-            
-            {/* Traditional Script Text in Hindi */}
-            <div className="self-center lg:self-start mb-3 flex items-center gap-2.5 text-[#FFF5E5]/95 font-['Kalam',cursive] text-2xl sm:text-3xl select-none">
-              <span>एक घूँट…</span>
-              <span className="text-[#D6A84F] font-bold">काठियावाड़ी की याद</span>
+          {/* Main Headline: "Har Cup Mein Kathiyawad" */}
+          <h1 className="animate-hero-2 font-serif font-black text-5xl sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.25rem] leading-[1.02] tracking-tight drop-shadow-lg mb-4 sm:mb-5">
+            <span className="block text-white">Har Cup Mein</span>
+            <span className="block text-[#EBB036] relative mt-1">
+              Kathiyawad
+              {/* Decorative brush underline */}
               <svg
-                viewBox="0 0 60 28"
-                className="w-10 h-5 text-[#D6A84F] inline-block -rotate-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                viewBox="0 0 280 16"
+                className="w-44 sm:w-60 h-3 sm:h-4 text-[#EBB036] mt-1"
+                fill="currentColor"
+                aria-hidden="true"
               >
-                <path d="M4 14 Q 28 4 52 16" />
-                <path d="M44 10 L 52 16 L 46 22" />
+                <path d="M4 10 C 60 2, 170 1, 276 8 C 210 14, 90 15, 4 10 Z" />
               </svg>
-            </div>
+            </span>
+          </h1>
 
-            {/* Editorial Headline: Ek Ghunt. Kathiyawadi Ki Yaad. */}
-            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-extrabold leading-[1.15] tracking-tight text-[#FFF5E5] mb-3 text-balance">
-              Ek Ghunt.
-              <br />
-              <span className="text-[#D6A84F]">Kathiyawadi Ki Yaad.</span>
-            </h1>
+          {/* Subtext description from reference design */}
+          <p className="animate-hero-3 font-sans text-sm sm:text-base md:text-lg text-white/95 max-w-xl mb-7 sm:mb-8 leading-relaxed drop-shadow-md">
+            Authentic Kathiyawadi Chai, brewed with tradition, served with love. Join the fastest growing chai franchise and be a part of a flavourful success story.
+          </p>
 
-            {/* Supporting Headline */}
-            <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-medium text-[#FFF5E5]/90 mb-4 tracking-normal">
-              Apni Chai. Apna Business. Apni Pehchaan.
-            </h2>
+          {/* Two Action Buttons matching reference image */}
+          <div className="animate-hero-4 flex flex-wrap items-center gap-3.5 sm:gap-4 mb-5">
+            <button
+              onClick={onExploreClick}
+              className="bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-sm sm:text-base px-7 sm:px-8 py-3.5 sm:py-4 rounded-full flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
+            >
+              <span>Get Franchise</span>
+              <ArrowRight className="w-4 h-4 stroke-[3]" />
+            </button>
 
-            {/* Short Franchise Description */}
-            <p className="text-sm sm:text-base text-[#FFF5E5]/85 max-w-xl mb-8 leading-relaxed">
-              Step into India's beloved tea tradition with authentic Kathiyawadi flavors, high customer loyalty, and comprehensive franchise onboarding with zero hidden royalties.
-            </p>
+            <button
+              onClick={() => {
+                const el = document.getElementById('signature-drinks');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  onExploreClick();
+                }
+              }}
+              className="bg-black/50 hover:bg-black/70 text-white font-semibold text-sm sm:text-base px-6 sm:px-7 py-3.5 sm:py-4 rounded-full border border-white/60 hover:border-white flex items-center justify-center gap-2.5 transition-all shadow-lg hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <span className="text-lg">☕</span>
+              <span>Explore Our Drinks</span>
+            </button>
+          </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
-              <button
-                onClick={onExploreClick}
-                className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#B96736] hover:bg-[#a6592c] text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-xl transition-all duration-200 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 border border-[#D6A84F]/40"
-              >
-                <span>Explore Franchise</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
-
-              <button
-                onClick={onEnquireClick}
-                className="w-full sm:w-auto flex items-center justify-center bg-[#173F32]/80 hover:bg-[#173F32] text-[#FFF5E5] font-semibold text-sm sm:text-base px-7 py-3.5 rounded-xl border border-[#D6A84F]/60 hover:border-[#D6A84F] transition-all duration-200 backdrop-blur-md"
-              >
-                Enquire Now
-              </button>
-            </div>
+          {/* Transparent Package Badge for Franchise Opportunity */}
+          <div className="animate-hero-5 flex items-center gap-2.5 bg-black/50 border border-[#EBB036]/50 rounded-full px-4 py-2 w-fit shadow-md">
+            <span className="w-2 h-2 rounded-full bg-[#EBB036] animate-pulse" />
+            <span className="text-xs sm:text-[13px] text-white/90">
+              Franchise Package: <strong className="text-[#EBB036] font-bold">₹2,11,000</strong> (All 26 Commercial Equipment Included)
+            </span>
           </div>
 
         </div>

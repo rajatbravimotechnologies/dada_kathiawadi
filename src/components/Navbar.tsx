@@ -40,17 +40,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-3 md:pt-4 px-3 sm:px-6 transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Floating navbar containing logo, links and CTA */}
-        <nav
-          className={`w-full flex items-center justify-between rounded-full pl-3 pr-2.5 sm:px-6 py-2 transition-all duration-300 ${
-            isScrolled
-              ? 'bg-[#173F32]/95 backdrop-blur-md shadow-2xl border border-[#D6A84F]/40'
-              : 'bg-[#173F32]/90 backdrop-blur-md shadow-xl border border-[#D6A84F]/20'
-          }`}
-        >
-          {/* Brand Logo & Name */}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div
+        className={`w-full transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#180B05] shadow-2xl border-b border-[#EBB036]/30 py-2.5 sm:py-3'
+            : 'bg-transparent py-4 sm:py-6'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Brand Logo & Name on Left */}
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -60,47 +59,50 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
             <img
               src="/assets/logo.png"
               alt="Dada Kathiawadi Chai Logo"
-              className="h-10 sm:h-12 w-auto object-contain"
+              className="h-11 sm:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
             />
             <div className="flex flex-col text-left">
-              <span className="font-serif font-bold text-sm sm:text-base leading-tight tracking-wide text-[#FFF5E5] group-hover:text-white transition-colors">
+              <span className="font-serif font-black text-base sm:text-lg leading-tight tracking-wide text-white group-hover:text-[#EBB036] transition-colors">
                 दादा काठियावाड़ी
               </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold tracking-widest text-[#D6A84F] uppercase">
-                चाय
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#EBB036] uppercase">
+                चाय • ESTD 2026
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links (Centered) */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] font-medium text-white/90">
+          {/* Desktop Navigation Links (Center / Right) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] xl:text-[14px] font-medium">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative py-1 transition-colors whitespace-nowrap hover:text-[#FFF5E5] ${
-                    isActive ? 'text-[#D6A84F] font-semibold' : 'text-[#FFF5E5]/80 hover:text-white'
+                  className={`relative py-1 transition-colors whitespace-nowrap group ${
+                    isActive ? 'text-[#EBB036] font-bold' : 'text-white/90 hover:text-white'
                   }`}
                 >
-                  {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#D6A84F] rounded-full" />
-                  )}
+                  <span>{link.name}</span>
+                  {/* Golden-yellow active link and hover underline */}
+                  <span
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#EBB036] rounded-full transition-all duration-200 ${
+                      isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
+                    }`}
+                  />
                 </Link>
               );
             })}
           </div>
 
-          {/* Right end: Enquire Now button & mobile hamburger */}
+          {/* Far Right: Get Franchise Button & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={handleEnquire}
-              className="flex items-center gap-1.5 bg-[#B96736] hover:bg-[#a6592c] text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap border border-[#D6A84F]/40"
+              className="flex items-center gap-2 bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer"
             >
-              <span>Enquire Now</span>
-              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span>Get Franchise</span>
+              <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </button>
 
             {/* Mobile hamburger menu button */}
@@ -109,15 +111,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
               className="lg:hidden p-2 text-white/90 hover:text-white focus:outline-none rounded-full hover:bg-white/10"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-        </nav>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-2 mx-auto max-w-lg bg-[#173F32]/98 backdrop-blur-md border border-[#D6A84F]/40 rounded-2xl p-5 shadow-2xl transition-all duration-200 animate-in fade-in slide-in-from-top-4">
+        <div className="lg:hidden mx-3 sm:mx-6 mt-2 max-w-lg bg-[#180B05] border border-[#EBB036]/40 rounded-2xl p-5 shadow-2xl transition-all duration-200 animate-in fade-in slide-in-from-top-4">
           <div className="flex flex-col gap-3">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
@@ -128,17 +130,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-[#B96736]/25 text-[#FFF5E5] font-semibold'
-                      : 'text-[#FFF5E5]/80 hover:bg-white/5 hover:text-white'
+                      ? 'bg-[#EBB036]/20 text-[#EBB036] font-bold border-l-2 border-[#EBB036]'
+                      : 'text-white/85 hover:bg-white/5 hover:text-white'
                   }`}
                 >
                   {link.name}
                 </Link>
               );
             })}
-            <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-[#FFF5E5]/80">
+            <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-white/80">
               <span className="flex items-center gap-1.5">
-                <PhoneCall className="w-3.5 h-3.5 text-[#D6A84F]" />
+                <PhoneCall className="w-3.5 h-3.5 text-[#EBB036]" />
                 Franchise Helpline: +91 98765 43210
               </span>
             </div>

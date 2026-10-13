@@ -26,34 +26,33 @@ export const AboutPage: React.FC = () => {
 
         {/* Section 1: Detailed Story */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
-          <div className="lg:col-span-6">
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#B87343]/30 bg-[#173F35]">
-              <ImageWithFallback
-                src="/assets/story-main.jpg"
-                alt="Dada drinking Kathiawadi Chai"
-                fallbackType="story-main"
-                className="w-full h-full object-cover"
+          <div className="lg:col-span-6 relative">
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#E5AA36]/50 bg-[#1E0E06]">
+              <img
+                src="/assets/hero-bg.png"
+                alt="Traditional Kathiawadi Chai Preparation"
+                className="w-full h-full object-cover object-[80%_center]"
               />
             </div>
           </div>
 
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#B87343] mb-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#B85E32] mb-2 font-sans">
               OUR ROOTS & TRADITION
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#173F35] mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#174635] mb-4">
               Pure Spices, Traditional Boil & Authentic Kathiawadi Swad
             </h2>
-            <p className="text-sm sm:text-base text-[#292720]/80 leading-relaxed mb-4">
+            <p className="text-sm sm:text-base text-[#392319] leading-[1.7] mb-4">
               In Kathiawad, tea is not just a drink; it is an emotion of hospitality, brotherhood, and bonding. Every cup is brewed with carefully measured indigenous tea spices, creamy full-fat milk, and simmered slowly in heavy brass-finish vessels.
             </p>
-            <p className="text-sm sm:text-base text-[#292720]/80 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-[#392319]/90 leading-[1.7] mb-6">
               With Dada Kathiawadi Chai, our vision is to empower young entrepreneurs across India with a standardized, profitable, and respected tea-business model backed by complete branding and setup support.
             </p>
 
             <button
               onClick={() => navigate('/franchise')}
-              className="w-fit flex items-center gap-2 bg-[#B87343] hover:bg-[#a36235] text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg active:scale-95"
+              className="w-fit flex items-center gap-2 bg-[#E5AA36] hover:bg-[#d69925] text-[#1E0E06] font-bold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
             >
               <span>Explore Franchise Model</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />

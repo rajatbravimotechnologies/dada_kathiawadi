@@ -93,6 +93,58 @@
   animation: steam-rise-3 4.2s cubic-bezier(0.25, 1, 0.5, 1) infinite 2.5s;
 }
 
+/* Staggered Hero entrance animations */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 {
+  animation: hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.animate-hero-2 {
+  animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.animate-hero-3 {
+  animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.animate-hero-4 {
+  animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.animate-hero-5 {
+  animation: hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.animate-hero-6 {
+  animation: hero-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-1,
+  .animate-hero-2,
+  .animate-hero-3,
+  .animate-hero-4,
+  .animate-hero-5,
+  .animate-hero-6,
+  .animate-steam-1,
+  .animate-steam-2,
+  .animate-steam-3 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Custom Antique Gold & Terracotta Gradient utility */
 .bg-gold-gradient {
   background: linear-gradient(135deg, #E5C37A 0%, #D6A84F 100%);

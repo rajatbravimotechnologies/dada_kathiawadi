@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#173F32] text-[#FFF5E5] pt-16 pb-12 border-t border-[#D6A84F]/30">
+    <footer className="bg-[#173F32] text-[#FFF5E5] pt-16 pb-12 border-t border-[#EBB036]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Grid */}
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="lg:col-span-5 flex flex-col items-start">
             <div className="flex items-center gap-3.5 mb-4">
-              <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#D6A84F] bg-[#0d261e] flex items-center justify-center p-1 shrink-0">
+              <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#EBB036] bg-[#0d261e] flex items-center justify-center p-1 shrink-0">
                 <ImageWithFallback
                   src="/assets/logo.png"
                   alt="Dada Kathiawadi Chai"
@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 <span className="font-serif font-bold text-xl tracking-tight text-white block">
                   Dada Kathiawadi Chai
                 </span>
-                <span className="text-xs text-[#D6A84F] font-medium tracking-wide">
+                <span className="text-xs text-[#EBB036] font-medium tracking-wide">
                   Ek Ghunt… Kathiawad Ki Yaad.
                 </span>
               </div>
@@ -41,8 +41,8 @@ export const Footer: React.FC = () => {
               Join India's fastest growing regional tea brand community.
             </p>
 
-            <div className="flex items-center gap-2 text-xs text-[#FFF5E5] bg-white/5 border border-[#D6A84F]/40 px-3.5 py-1.5 rounded-full">
-              <span className="text-[#D6A84F] font-bold">Franchise Package ₹2,11,000</span>
+            <div className="flex items-center gap-2 text-xs text-[#FFF5E5] bg-white/5 border border-[#EBB036]/40 px-3.5 py-1.5 rounded-full">
+              <span className="text-[#EBB036] font-bold">Franchise Package ₹2,11,000</span>
               <span className="text-[#FFF5E5]/60">•</span>
               <span>All 26 Essential Equipment Included</span>
             </div>
@@ -55,37 +55,37 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-[#FFF5E5]/75">
               <li>
-                <Link to="/" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/about" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   Our Story
                 </Link>
               </li>
               <li>
-                <Link to="/franchise" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/franchise" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   Franchise Model (₹2,11,000)
                 </Link>
               </li>
               <li>
-                <Link to="/included" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/included" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   What's Included (26 Items)
                 </Link>
               </li>
               <li>
-                <Link to="/process" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/process" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link to="/faqs" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/faqs" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   Frequently Asked Questions
                 </Link>
               </li>
               <li>
-                <Link to="/contact" onClick={scrollToTop} className="hover:text-[#D6A84F] transition-colors">
+                <Link to="/contact" onClick={scrollToTop} className="hover:text-[#EBB036] transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -99,17 +99,17 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm text-[#FFF5E5]/75">
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#D6A84F] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#EBB036] shrink-0 mt-0.5" />
                 <span>
                   National Highway 8B, Near Kathiawadi Cultural Plaza, Rajkot - Ahmedabad Highway, Gujarat, India - 360003
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#D6A84F] shrink-0" />
+                <Phone className="w-4 h-4 text-[#EBB036] shrink-0" />
                 <span>+91 98765 43210 / +91 91234 56789</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#D6A84F] shrink-0" />
+                <Mail className="w-4 h-4 text-[#EBB036] shrink-0" />
                 <span>franchise@dadakathiawadichai.com</span>
               </li>
             </ul>
