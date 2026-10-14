@@ -61,13 +61,54 @@ export const HomePage: React.FC = () => {
       <section
         id="about"
         className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[#F8E8C9]"
-        style={{
-          backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-        }}
       >
+        {/* ========================================================================= */}
+        {/* HERITAGE PARCHMENT BACKGROUND — FULLY VISIBLE ACROSS ALL DEVICES           */}
+        {/* PURE BACKGROUND ONLY (NO BOXES, NO CARDS AROUND BACKGROUND)               */}
+        {/* ========================================================================= */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full edge-to-edge panoramic heritage artwork matching reference */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Responsive Heritage Artwork Framing */}
+          {/* Guarantees 100% of illustrated elements (lake palace, trees, windmill, spices, kulhad) are visible */}
+          <div className="block lg:hidden w-full h-full bg-[#F8E8C9] relative">
+            {/* Top-Left: Heritage Lake Palace, Ghats & Trees */}
+            <div
+              className="absolute top-0 left-0 w-full h-[320px] sm:h-[420px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom-Right: Windmill, Palatial Dome & Steaming Kulhad Chai with Ginger & Cinnamon */}
+            <div
+              className="absolute bottom-0 right-0 w-full h-[360px] sm:h-[460px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+                backgroundPosition: 'right bottom',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
+
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -82,7 +123,7 @@ export const HomePage: React.FC = () => {
                 <img
                   src="/assets/hero-bg.png"
                   alt="Authentic Kathiyawadi Chai Preparation with Kulhad, Brass Kettle, and Spices"
-                  className="w-full h-full object-cover object-center sm:object-[75%_center] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-[80%_center] sm:object-[82%_center] transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
 
@@ -144,13 +185,52 @@ export const HomePage: React.FC = () => {
       <section
         id="signature-drinks"
         className="relative pt-16 sm:pt-20 pb-24 sm:pb-32 lg:pb-36 overflow-hidden bg-[#F8E8C9]"
-        style={{
-          backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center bottom',
-          backgroundRepeat: 'no-repeat',
-        }}
       >
+        {/* ========================================================================= */}
+        {/* HERITAGE PARCHMENT BACKGROUND — FULLY VISIBLE ACROSS ALL DEVICES           */}
+        {/* ========================================================================= */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full edge-to-edge panoramic heritage artwork */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center bottom',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Multi-Corner Heritage Artwork Framing */}
+          <div className="block lg:hidden w-full h-full bg-[#F8E8C9] relative">
+            {/* Top-Left: Heritage Lake Palace & Trees */}
+            <div
+              className="absolute top-0 left-0 w-full h-[320px] sm:h-[400px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom-Right: Windmill, Palatial Dome & Steaming Kulhad Chai with Ginger & Cinnamon */}
+            <div
+              className="absolute bottom-0 right-0 w-full h-[360px] sm:h-[460px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
+                backgroundPosition: 'right bottom',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Header */}

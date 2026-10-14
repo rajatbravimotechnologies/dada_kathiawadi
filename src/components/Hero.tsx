@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
   return (
     <section
       id="home"
-      className="relative bg-[#180B05] text-white overflow-hidden min-h-[auto] lg:min-h-[96svh] flex items-center pt-20 sm:pt-24 lg:pt-32 pb-14 sm:pb-16 lg:pb-24"
+      className="relative bg-[#180B05] text-white overflow-hidden min-h-[auto] lg:min-h-[96svh] flex items-center pt-16 sm:pt-20 lg:pt-32 pb-14 sm:pb-16 lg:pb-24"
     >
       {/* ========================================================================= */}
       {/* BACKGROUND IMAGE CONTAINER — PURE BACKGROUND ONLY (NO BOXES, NO CARDS)    */}
@@ -27,19 +27,19 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
 
         {/* Mobile & Tablet Background (Screens < 1024px) */}
         {/* Full 16:9 width so the complete scene (lake on left, sunset, stall, kulhad) is 100% visible */}
-        <div className="block lg:hidden w-full relative">
+        <div className="block lg:hidden w-full relative bg-[#180B05]">
           <img
             src="/assets/hero-bg.png"
             alt="Dada Kathiawadi Chai Stall & Steaming Kulhad at Sunset"
             className="w-full h-auto object-cover object-top"
             loading="eager"
           />
-          {/* Subtle gradient fading the bottom of the background image into #180B05 */}
+          {/* Natural atmospheric gradient fading the bottom of the scenic artwork into #180B05 */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                'linear-gradient(180deg, rgba(24, 11, 5, 0.15) 0%, rgba(24, 11, 5, 0.05) 50%, rgba(24, 11, 5, 0.70) 80%, #180B05 100%)',
+                'linear-gradient(180deg, rgba(24, 11, 5, 0.08) 0%, transparent 35%, rgba(24, 11, 5, 0.50) 70%, #180B05 100%)',
             }}
           />
         </div>
@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
       {/* ========================================================================= */}
       {/* HERO CONTENT CONTAINER — SAME INTERFACE ACROSS ALL DEVICES                */}
       {/* ========================================================================= */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-[46vw] sm:pt-[44vw] md:pt-[36vw] lg:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-[38vw] sm:pt-[34vw] md:pt-[28vw] lg:pt-0">
         <div className="w-full lg:max-w-[50%] xl:max-w-[46%] flex flex-col justify-center text-left py-2 sm:py-4">
           
           {/* Yellow Brush Badge: "Asli Swad, Desi Andaaz" */}
