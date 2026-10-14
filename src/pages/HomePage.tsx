@@ -77,12 +77,12 @@ export const HomePage: React.FC = () => {
               <div className="absolute -top-2.5 -left-2.5 w-7 h-7 border-t-2 border-l-2 border-[#E5AA36] rounded-tl-lg pointer-events-none z-20" />
               <div className="absolute -bottom-2.5 -right-2.5 w-7 h-7 border-b-2 border-r-2 border-[#E5AA36] rounded-br-lg pointer-events-none z-20" />
 
-              {/* 4:3 Photographic Card */}
-              <div className="relative rounded-[24px] overflow-hidden shadow-2xl border border-[#E5AA36]/60 bg-[#1E0E06] aspect-[4/3] group">
+              {/* Photographic Card */}
+              <div className="relative rounded-[24px] overflow-hidden shadow-2xl border border-[#E5AA36]/60 bg-[#1E0E06] aspect-[16/10] sm:aspect-[4/3] group">
                 <img
                   src="/assets/hero-bg.png"
                   alt="Authentic Kathiyawadi Chai Preparation with Kulhad, Brass Kettle, and Spices"
-                  className="w-full h-full object-cover object-[80%_center] sm:object-[82%_center] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center sm:object-[75%_center] transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
 
