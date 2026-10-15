@@ -1,7 +1,28 @@
 import React, { useState } from 'react';
 import { Hero } from '../components/Hero';
 import { FeatureStrip } from '../components/FeatureStrip';
-import { ArrowRight, Check, Sparkles, Coffee, Leaf } from 'lucide-react';
+import { RoyalCtaBanner } from '../components/RoyalCtaBanner';
+import {
+  ArrowRight,
+  Check,
+  Sparkles,
+  Coffee,
+  Leaf,
+  Store,
+  Flame,
+  GraduationCap,
+  FileText,
+  Megaphone,
+  HeartHandshake,
+  PhoneCall,
+  Lightbulb,
+  Package,
+  Users,
+  FileCheck,
+  Rocket,
+  Plus,
+  Minus,
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { ImageWithFallback } from '../components/ImageWithFallback';
 import { FRANCHISE_PRODUCTS } from '../data/products';
@@ -9,9 +30,145 @@ import { FRANCHISE_PRODUCTS } from '../data/products';
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [activeBeverage, setActiveBeverage] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(2);
 
-  // Preview only first 5 items on Home
-  const previewProducts = FRANCHISE_PRODUCTS.slice(0, 5);
+  const homeFaqs = [
+    {
+      id: 1,
+      question: 'What is the total franchise cost?',
+      answer:
+        'The total franchise startup package is ₹2,11,000 (all-inclusive). There are zero royalties, zero monthly revenue sharing, and zero hidden charges.',
+    },
+    {
+      id: 2,
+      question: 'What is included in the ₹2,11,000 package?',
+      answer:
+        'The package includes all 26 commercial setup items: 8x4 ft Acrylic Light Board, Stainless Steel Service Counter, Authentic Peetal Patila, Gas Regulator & Pipe, Milton Thermos (3.5L), 100 Glass Cups, 4,000 Branded Disposable Cups, 100 packets of Kathiawadi Chai Masala, and full operational recipe SOPs.',
+    },
+    {
+      id: 3,
+      question: 'How much space is required for the outlet?',
+      answer:
+        'A compact carpet area of 80 sq. ft. to 150 sq. ft. is sufficient to run a high-volume outlet. Locations with steady pedestrian footfall — such as commercial markets, business districts, college campuses, and transit stations — deliver prime results.',
+    },
+    {
+      id: 4,
+      question: 'Do you provide training and support?',
+      answer:
+        'Yes. We provide complete hands-on brewmaster training covering authentic Kathiawadi spice-boiling ratios, counter sanitation, customer service standards, billing workflow, and opening-week launch assistance.',
+    },
+    {
+      id: 5,
+      question: 'How soon can I start my outlet?',
+      answer:
+        'You can launch your outlet within 10 to 15 days of signing the franchise agreement. Equipment dispatch takes 3–5 working days, followed by 2–3 days of onsite setup and barista training.',
+    },
+  ];
+
+  // Top 5 preview products with custom badge icons matching reference design
+  const previewProducts = [
+    {
+      id: 1,
+      name: 'Light Board',
+      specs: '8 x 4 feet Acrylic Board',
+      image: '/assets/products/light-board.png',
+      badgeIcon: Lightbulb,
+    },
+    {
+      id: 2,
+      name: 'Service Counter',
+      specs: '4 x 2 feet Counter',
+      image: '/assets/products/Service Counter.png',
+      badgeIcon: Store,
+    },
+    {
+      id: 3,
+      name: 'Peetal Patila',
+      specs: '2.5 x 2 feet',
+      image: '/assets/products/Peetal Patila.png',
+      badgeIcon: Coffee,
+    },
+    {
+      id: 4,
+      name: 'Gas Regulator',
+      specs: 'with Pipe',
+      image: '/assets/products/gas-regulator.png',
+      badgeIcon: Flame,
+    },
+    {
+      id: 5,
+      name: 'Milton Thermos',
+      specs: '3.5 Litres',
+      image: '/assets/products/Milton Thermos.png',
+      badgeIcon: Sparkles,
+    },
+  ];
+
+  const franchiseFeatures = [
+    {
+      icon: Store,
+      title: '₹2,11,000',
+      subtitle: 'All-in Startup Model',
+    },
+    {
+      icon: Flame,
+      title: '26 Commercial',
+      subtitle: 'Equipments Included',
+    },
+    {
+      icon: GraduationCap,
+      title: 'Training &',
+      subtitle: 'Setup Support',
+    },
+    {
+      icon: FileText,
+      title: 'Authentic',
+      subtitle: 'Recipes & SOPs',
+    },
+    {
+      icon: Megaphone,
+      title: 'Marketing',
+      subtitle: 'Guidance',
+    },
+    {
+      icon: HeartHandshake,
+      title: 'Ongoing',
+      subtitle: 'Franchise Support',
+    },
+  ];
+
+  const howItWorksSteps = [
+    {
+      num: '01',
+      title: 'Apply',
+      subtitle: 'Share your details',
+      icon: FileText,
+    },
+    {
+      num: '02',
+      title: 'Consultation',
+      subtitle: 'Discuss location & setup',
+      icon: Users,
+    },
+    {
+      num: '03',
+      title: 'Agreement',
+      subtitle: 'Get started with paperwork',
+      icon: FileCheck,
+    },
+    {
+      num: '04',
+      title: 'Setup & Training',
+      subtitle: 'Outlet setup & team training',
+      icon: GraduationCap,
+    },
+    {
+      num: '05',
+      title: 'Launch',
+      subtitle: 'Start serving & grow together',
+      icon: Rocket,
+    },
+  ];
 
   const signatureBeverages = [
     {
@@ -361,224 +518,463 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Franchise Opportunity: Dark Forest Green with Gold Details */}
-      <section className="py-20 md:py-24 bg-[#173F32] text-[#FFF5E5] relative border-y border-[#D6A84F]/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      {/* 5. Business Opportunity / Franchise Model: Vintage Torn Parchment Showcase */}
+      <section
+        id="franchise-opportunity"
+        className="relative py-20 sm:py-24 lg:py-28 xl:py-32 overflow-hidden bg-[#F8E8C9]"
+      >
+        {/* Background container: Pure background only (no boxes, no cards around background) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full background image 100% visible from edge to edge */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/franchise-opportunity-background.png.png')",
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Responsive framing with top and bottom torn edges and corner tea leaves */}
+          <div className="block lg:hidden w-full h-full bg-[#F8E8C9] relative">
+            {/* Top Torn Paper & Tea Leaves */}
+            <div
+              className="absolute top-0 left-0 w-full h-[220px] sm:h-[300px] pointer-events-none"
+              style={{
+                backgroundImage: "url('/assets/franchise-opportunity-background.png.png')",
+                backgroundPosition: 'center top',
+                backgroundSize: '100% auto',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom Torn Paper & Tea Leaves */}
+            <div
+              className="absolute bottom-0 left-0 w-full h-[220px] sm:h-[300px] pointer-events-none"
+              style={{
+                backgroundImage: "url('/assets/franchise-opportunity-background.png.png')",
+                backgroundPosition: 'center bottom',
+                backgroundSize: '100% auto',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 65%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 65%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            <div className="lg:col-span-7">
-              <span className="text-xs font-bold tracking-widest uppercase text-[#D6A84F] mb-2 block">
+            {/* Left Column: Business Opportunity Copy & Actions */}
+            <div className="lg:col-span-5 flex flex-col items-start justify-center text-left">
+              <span className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#B85E32] mb-2 sm:mb-3 block font-sans">
                 BUSINESS OPPORTUNITY
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFF5E5] mb-4 leading-tight">
-                Launch Your Profitable Outlet with Zero Royalty
+
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.12] mb-3.5 tracking-tight">
+                <span className="block text-[#28140D]">Start Your Own</span>
+                <span className="block text-[#A84A1C] mt-1">Dada Kathiyawadi Chai</span>
               </h2>
-              <p className="text-sm sm:text-base text-[#FFF5E5]/80 mb-8 max-w-xl leading-relaxed">
-                We believe in straightforward, transparent franchise partnerships. For a one-time fee of ₹2,11,000, you receive comprehensive equipment, authentic masala formulas, staff training, and brand signage to start immediately.
+
+              <p className="font-sans text-sm sm:text-base text-[#392319] leading-relaxed mb-7 max-w-xl">
+                Be a part of India's beloved chai tradition with a proven franchise model at just <strong className="font-bold text-[#28140D]">₹2,11,000 all-in</strong>.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8 max-w-lg">
-                <div className="flex items-center gap-2.5 bg-white/5 border border-[#D6A84F]/30 rounded-xl p-3">
-                  <Check className="w-4 h-4 text-[#D6A84F] stroke-[3] shrink-0" />
-                  <span className="text-xs font-medium text-[#FFF5E5]">26 Commercial Equipment Items</span>
-                </div>
-                <div className="flex items-center gap-2.5 bg-white/5 border border-[#D6A84F]/30 rounded-xl p-3">
-                  <Check className="w-4 h-4 text-[#D6A84F] stroke-[3] shrink-0" />
-                  <span className="text-xs font-medium text-[#FFF5E5]">Zero Monthly Royalties</span>
-                </div>
-                <div className="flex items-center gap-2.5 bg-white/5 border border-[#D6A84F]/30 rounded-xl p-3">
-                  <Check className="w-4 h-4 text-[#D6A84F] stroke-[3] shrink-0" />
-                  <span className="text-xs font-medium text-[#FFF5E5]">Standard Recipe Training</span>
-                </div>
-                <div className="flex items-center gap-2.5 bg-white/5 border border-[#D6A84F]/30 rounded-xl p-3">
-                  <Check className="w-4 h-4 text-[#D6A84F] stroke-[3] shrink-0" />
-                  <span className="text-xs font-medium text-[#FFF5E5]">Store Signage & Grand Opening</span>
-                </div>
-              </div>
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+                <button
+                  onClick={() => navigate('/franchise')}
+                  className="inline-flex items-center justify-center gap-2.5 bg-[#E5AA36] hover:bg-[#d69925] text-[#1E0E06] font-bold text-sm sm:text-base px-7 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 shadow-md hover:shadow-xl active:scale-95 cursor-pointer"
+                >
+                  <span>Get Franchise Brochure</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </button>
 
-              <button
-                onClick={() => navigate('/franchise')}
-                className="flex items-center gap-2.5 bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-sm sm:text-base px-8 py-4 rounded-full transition-all shadow-lg active:scale-95 cursor-pointer"
-              >
-                <span>Explore Full Franchise Model</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
-            </div>
-
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="bg-[#FFF5E5] text-[#28140D] rounded-3xl p-7 sm:p-9 shadow-2xl border-2 border-[#EBB036] w-full max-w-sm text-center">
-                <span className="text-[11px] font-bold text-[#B96736] tracking-widest uppercase block mb-1">
-                  OFFICIAL FRANCHISE FEE
-                </span>
-                <div className="font-serif text-4xl sm:text-5xl font-black text-[#173F32] mb-2">
-                  ₹2,11,000
-                </div>
-                <p className="text-xs text-[#28140D]/70 mb-6 leading-relaxed">
-                  Includes complete counter setup, commercial burners, traditional brass kettles, and starter inventory.
-                </p>
                 <button
                   onClick={() => navigate('/contact')}
-                  className="w-full py-3.5 rounded-full bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-sm transition-all shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 bg-[#FFF4E2]/85 hover:bg-[#FFF4E2] text-[#28140D] font-bold text-sm sm:text-base px-6 sm:px-7 py-3.5 sm:py-4 rounded-full border border-[#B85E32]/35 hover:border-[#B85E32] transition-all duration-300 shadow-xs hover:shadow-md active:scale-95 cursor-pointer"
                 >
-                  Enquire For Your City
+                  <PhoneCall className="w-4 h-4 text-[#B85E32] stroke-[2.2]" />
+                  <span>Talk to Our Team</span>
                 </button>
               </div>
             </div>
 
+            {/* Right Column: 6-Feature Grid Card */}
+            <div className="lg:col-span-7">
+              <div className="bg-[#FFFDF8] rounded-[28px] sm:rounded-[32px] p-6 sm:p-7 lg:p-8 shadow-xl border border-[#E5AA36]/30">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-6 gap-x-4 sm:gap-0">
+                  {franchiseFeatures.map((feat, idx) => {
+                    const Icon = feat.icon;
+                    const isTopRow = idx < 3;
+                    const isRightCol = (idx + 1) % 3 === 0;
+                    return (
+                      <div
+                        key={idx}
+                        className={`flex flex-col items-start sm:px-5 lg:px-6 py-2 sm:py-4 ${
+                          isTopRow ? 'sm:border-b sm:border-[#E5AA36]/25' : ''
+                        } ${
+                          !isRightCol ? 'sm:border-r sm:border-[#E5AA36]/25' : ''
+                        }`}
+                      >
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-[#B85E32] bg-[#FDEFE7] flex items-center justify-center text-[#B85E32] mb-2.5 sm:mb-3 shadow-xs">
+                          <Icon className="w-5 h-5 stroke-[2.2]" />
+                        </div>
+                        <h4 className="font-serif font-black text-sm sm:text-base lg:text-lg text-[#28140D] leading-tight">
+                          {feat.title}
+                        </h4>
+                        <p className="font-sans text-[11px] sm:text-xs text-[#5C4033] font-medium leading-tight mt-1">
+                          {feat.subtitle}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 6. What's Included Preview (Top 5 Items) */}
-      <section className="py-20 md:py-24 bg-[#FFF5E5] relative border-b border-[#D6A84F]/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 6. What's Included Preview (Top 5 Items) — Rustic Chai Heritage Panorama */}
+      <section
+        id="included-preview"
+        className="relative py-20 sm:py-24 lg:py-28 overflow-hidden bg-[#F8E8C9]"
+      >
+        {/* Background container: Pure background only (no boxes, no cards around background) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full background image 100% visible from edge to edge */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/Rustic Chai Heritage Panorama.png')",
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Multi-Layer Responsive Framing */}
+          {/* Lake palace on top-left and chai setup on bottom-right remain 100% visible */}
+          <div className="block lg:hidden w-full h-full bg-[#F8E8C9] relative">
+            {/* Top-Left: Heritage Lake Palace & Foliage */}
+            <div
+              className="absolute top-0 left-0 w-full h-[280px] sm:h-[360px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/Rustic Chai Heritage Panorama.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom-Right: Wooden table, Brass Kettle, Kulhads & Spices */}
+            <div
+              className="absolute bottom-0 right-0 w-full h-[320px] sm:h-[400px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/Rustic Chai Heritage Panorama.png')",
+                backgroundPosition: 'right bottom',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 55%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 55%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <div>
-              <span className="text-xs font-bold tracking-widest uppercase text-[#B96736] mb-1 block">
-                PACKAGE INVENTORY PREVIEW
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-[#173F32]">
-                What's Included in ₹2,11,000
-              </h2>
-            </div>
-            <button
-              onClick={() => navigate('/included')}
-              className="flex items-center gap-2 text-sm font-bold text-[#B96736] hover:text-[#9e5226] transition-colors"
-            >
-              <span>Explore All 26 Items</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
-            {previewProducts.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => navigate('/included')}
-                className="bg-white border border-[#D6A84F]/30 rounded-2xl p-4 flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
-              >
-                <div className="aspect-square w-full rounded-xl bg-[#FFF5E5] border border-[#D6A84F]/20 flex items-center justify-center p-2 mb-3">
-                  <ImageWithFallback
-                    src={item.image}
-                    alt={item.name}
-                    fallbackType="product"
-                    titleFallback={item.name}
-                    specsFallback={item.specs}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <h4 className="font-serif font-bold text-xs sm:text-sm text-[#173F32] leading-snug line-clamp-1 group-hover:text-[#B96736]">
-                  {item.name}
-                </h4>
-                <p className="text-[11px] text-[#28140D]/65 line-clamp-1 mt-0.5">
-                  {item.specs}
-                </p>
+          {/* Header Area */}
+          <div className="relative text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            
+            {/* Small Ornamental Kettle Icon */}
+            <div className="flex items-center justify-center gap-3 mb-2 text-[#E5AA36]">
+              <div className="h-px bg-[#B85E32]/35 w-12 sm:w-16" />
+              <div className="w-8 h-8 rounded-full bg-[#FFF4E2] border border-[#B85E32]/30 flex items-center justify-center text-[#B85E32] shadow-xs">
+                <Coffee className="w-4 h-4 stroke-[2.2]" />
               </div>
-            ))}
+              <div className="h-px bg-[#B85E32]/35 w-12 sm:w-16" />
+            </div>
+
+            {/* Eyebrow */}
+            <span className="text-xs sm:text-sm font-bold tracking-[0.22em] uppercase text-[#B85E32] mb-1.5 block font-sans">
+              PACKAGE INVENTORY PREVIEW
+            </span>
+
+            {/* Main Heading */}
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#173F32] tracking-tight mb-3">
+              What's Included in ₹2,11,000
+            </h2>
+
+            {/* Description */}
+            <p className="font-sans text-xs sm:text-sm md:text-base text-[#392319] leading-relaxed max-w-xl mx-auto">
+              Get a complete, ready-to-run Kathiyawadi Chai outlet with 26 essential items.
+              <span className="block mt-0.5">Everything you need to start brewing success from day one.</span>
+            </p>
+
+            {/* Top Right "Explore All 26 Items ->" Button */}
+            <div className="lg:absolute lg:right-0 lg:top-8 mt-5 lg:mt-0 flex justify-center">
+              <button
+                onClick={() => navigate('/included')}
+                className="inline-flex items-center gap-2 bg-[#E5AA36] hover:bg-[#d69925] text-[#1E0E06] font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 cursor-pointer whitespace-nowrap"
+              >
+                <span>Explore All 26 Items</span>
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </button>
+            </div>
           </div>
 
-          <div className="text-center">
+          {/* 5 Inventory Preview Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5 mb-10 sm:mb-12">
+            {previewProducts.map((item) => {
+              const BadgeIcon = item.badgeIcon;
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => navigate('/included')}
+                  className="bg-[#FFFDF8] rounded-[22px] sm:rounded-[26px] p-3 sm:p-3.5 flex flex-col items-center text-center shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-[#E5AA36]/35 cursor-pointer group"
+                >
+                  {/* Photo Container */}
+                  <div className="w-full aspect-[4/3] rounded-[18px] sm:rounded-[20px] overflow-hidden bg-[#1E0E06] relative shadow-inner">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Circular Stamp Badge overlapping bottom of the photo */}
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#3D170A] border-2 border-[#E5AA36] text-[#E5AA36] flex items-center justify-center -mt-4.5 sm:-mt-5 z-10 shadow-md group-hover:scale-110 transition-transform">
+                    <BadgeIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[2.2]" />
+                  </div>
+
+                  {/* Item Title & Specs */}
+                  <div className="pt-2 sm:pt-2.5 pb-1 w-full">
+                    <h4 className="font-serif font-black text-sm sm:text-base text-[#173F32] leading-snug line-clamp-1 group-hover:text-[#B85E32] transition-colors">
+                      {item.name}
+                    </h4>
+                    <p className="font-sans text-[11px] sm:text-xs text-[#5C4033] font-medium line-clamp-1 mt-0.5">
+                      {item.specs}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Button with Ornamental Flourishes */}
+          <div className="flex items-center justify-center gap-3 sm:gap-5">
+            {/* Left flourish */}
+            <svg width="40" height="24" viewBox="0 0 50 30" fill="none" className="text-[#B85E32]/60 hidden sm:block">
+              <path d="M50 15 C35 15, 25 5, 10 10 C5 12, 0 15, 10 18 C25 22, 35 15, 50 15 Z" fill="currentColor" opacity="0.6" />
+              <circle cx="6" cy="14" r="3" fill="currentColor" />
+            </svg>
+
             <button
               onClick={() => navigate('/included')}
-              className="inline-flex items-center gap-2 bg-[#B96736] hover:bg-[#a6592c] text-white font-bold text-sm px-8 py-3.5 rounded-full transition-all shadow-md active:scale-95 border border-[#D6A84F]/40"
+              className="inline-flex items-center gap-2.5 bg-[#8C3A18] hover:bg-[#783013] text-[#FFF4E2] font-bold text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 border border-[#E5AA36]/40 cursor-pointer"
             >
+              <Package className="w-4 h-4 stroke-[2.3]" />
               <span>Explore Complete 26-Item List</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </button>
-          </div>
 
-        </div>
-      </section>
-
-      {/* 7. How It Works: Connected Editorial Steps */}
-      <section className="py-20 md:py-24 bg-[#FFF5E5] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold tracking-widest uppercase text-[#B96736] mb-2 inline-block">
-            STEP-BY-STEP ROADMAP
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#173F32] mb-3">
-            How to Open Your Outlet
-          </h2>
-          {/* Ornamental Divider */}
-          <div className="flex items-center justify-center gap-3 my-3 text-[#D6A84F]">
-            <div className="h-px bg-[#D6A84F]/60 w-16" />
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+            {/* Right flourish */}
+            <svg width="40" height="24" viewBox="0 0 50 30" fill="none" className="text-[#B85E32]/60 hidden sm:block transform scale-x-[-1]">
+              <path d="M50 15 C35 15, 25 5, 10 10 C5 12, 0 15, 10 18 C25 22, 35 15, 50 15 Z" fill="currentColor" opacity="0.6" />
+              <circle cx="6" cy="14" r="3" fill="currentColor" />
             </svg>
-            <div className="h-px bg-[#D6A84F]/60 w-16" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-12 text-left relative">
-            <div className="bg-white p-6 rounded-2xl border border-[#D6A84F]/30 shadow-sm relative">
-              <span className="font-serif font-black text-2xl text-[#D6A84F] block mb-2">01</span>
-              <h4 className="font-serif font-bold text-lg text-[#173F32] mb-1">Enquire</h4>
-              <p className="text-xs text-[#28140D]/75 leading-relaxed">
-                Submit your franchise application and share your target location or city.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl border border-[#D6A84F]/30 shadow-sm relative">
-              <span className="font-serif font-black text-2xl text-[#D6A84F] block mb-2">02</span>
-              <h4 className="font-serif font-bold text-lg text-[#173F32] mb-1">Consultation</h4>
-              <p className="text-xs text-[#28140D]/75 leading-relaxed">
-                Connect with our franchise advisory team to discuss unit economics and layout.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl border border-[#D6A84F]/30 shadow-sm relative">
-              <span className="font-serif font-black text-2xl text-[#D6A84F] block mb-2">03</span>
-              <h4 className="font-serif font-bold text-lg text-[#173F32] mb-1">Agreement</h4>
-              <p className="text-xs text-[#28140D]/75 leading-relaxed">
-                Sign transparent agreements and disburse the verified ₹2,11,000 package fee.
-              </p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl border border-[#D6A84F]/30 shadow-sm relative">
-              <span className="font-serif font-black text-2xl text-[#D6A84F] block mb-2">04</span>
-              <h4 className="font-serif font-bold text-lg text-[#173F32] mb-1">Launch</h4>
-              <p className="text-xs text-[#28140D]/75 leading-relaxed">
-                Receive equipment dispatch, complete hands-on recipe training, and open.
-              </p>
-            </div>
-          </div>
-
-          <button
-            onClick={() => navigate('/process')}
-            className="inline-flex items-center gap-2 bg-[#173F32] hover:bg-[#0e271f] text-[#FFF5E5] font-bold text-sm px-8 py-3.5 rounded-xl transition-all shadow-md active:scale-95 border border-[#D6A84F]/40"
-          >
-            <span>Read Complete Onboarding Process</span>
-            <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-          </button>
         </div>
       </section>
 
-      {/* 8. Final CTA: Har Ghunt Mein Kathiyawad */}
-      <section className="py-20 md:py-24 bg-[#173F32] text-center text-[#FFF5E5] relative border-t border-[#D6A84F]/40">
-        <div className="max-w-4xl mx-auto px-4">
-          <Sparkles className="w-10 h-10 text-[#D6A84F] mx-auto mb-4" />
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFF5E5] mb-3">
-            Har Ghunt Mein Kathiyawad.
+      {/* 7. How It Works: 5-Step Connected Editorial Process */}
+      <section id="process" className="py-20 md:py-24 bg-[#FAF4E8] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          
+          {/* Eyebrow */}
+          <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#B85E32] mb-2 block font-sans">
+            SIMPLE & SUPPORTIVE PROCESS
+          </span>
+
+          {/* Heading */}
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#173F32] tracking-tight mb-14 sm:mb-18">
+            How It Works
           </h2>
-          <p className="text-sm sm:text-base text-[#FFF5E5]/80 max-w-xl mx-auto mb-8 leading-relaxed">
-            Begin your entrepreneurial venture with India's most authentic regional chai brand. Direct founder assistance, standardized spice supply, and full launch guidance.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => navigate('/contact')}
-              className="w-full sm:w-auto bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-base px-8 py-4 rounded-full transition-all shadow-lg active:scale-95 cursor-pointer"
-            >
-              Enquire For Franchise Now
-            </button>
-            <button
-              onClick={() => navigate('/faqs')}
-              className="w-full sm:w-auto bg-transparent hover:bg-white/10 text-white font-semibold text-base px-8 py-4 rounded-full border border-white/50 hover:border-white transition-all active:scale-95 cursor-pointer"
-            >
-              Frequently Asked Questions
-            </button>
+
+          {/* 5-Step Connected Process Flow */}
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-0 max-w-6xl mx-auto">
+            {howItWorksSteps.map((step, idx) => {
+              const Icon = step.icon;
+              const isLast = idx === howItWorksSteps.length - 1;
+              return (
+                <React.Fragment key={idx}>
+                  {/* Step Node */}
+                  <div
+                    onClick={() => navigate('/process')}
+                    className="flex flex-col items-center text-center max-w-[190px] w-full group cursor-pointer"
+                  >
+                    {/* Terracotta Circle Icon Badge (Exact match to reference: borderless rich gradient with clean white line icon) */}
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#B54A20] via-[#963C15] to-[#782C0E] shadow-[0_4px_16px_rgba(150,60,21,0.28)] flex items-center justify-center text-white group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(150,60,21,0.38)] transition-all duration-300 shrink-0">
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.8] text-white" />
+                    </div>
+
+                    {/* Step Number in Warm Golden Mustard */}
+                    <span className="font-sans font-bold text-xs sm:text-sm tracking-widest text-[#C4923C] mt-4 mb-1 block">
+                      {step.num}
+                    </span>
+
+                    {/* Step Title in Bold Dark Serif */}
+                    <h4 className="font-serif font-bold text-base sm:text-lg text-[#1F140E] leading-snug group-hover:text-[#B54A20] transition-colors">
+                      {step.title}
+                    </h4>
+
+                    {/* Step Subtitle in Muted Earthy Brown */}
+                    <p className="font-sans text-xs sm:text-[13px] text-[#736357] mt-1 leading-relaxed max-w-[160px]">
+                      {step.subtitle}
+                    </p>
+                  </div>
+
+                  {/* Horizontal Connector Line for Desktop with Center Diamond (Mathematically centered to the h-16/h-20 circles) */}
+                  {!isLast && (
+                    <div className="hidden lg:flex items-center h-16 sm:h-20 flex-1 mx-2 sm:mx-3 text-[#B85E32]/70 shrink-0">
+                      <div className="h-0 border-t border-dashed border-[#B85E32]/50 flex-1" />
+                      <div className="w-1.5 h-1.5 rotate-45 bg-[#B85E32] mx-2 shrink-0" />
+                      <div className="h-0 border-t border-dashed border-[#B85E32]/50 flex-1" />
+                    </div>
+                  )}
+
+                  {/* Vertical Connector Line for Mobile/Tablet with Center Diamond */}
+                  {!isLast && (
+                    <div className="flex lg:hidden flex-col items-center my-1 text-[#B85E32]/70">
+                      <div className="w-0 h-6 border-l border-dashed border-[#B85E32]/50" />
+                      <div className="w-1.5 h-1.5 rotate-45 bg-[#B85E32] my-1 shrink-0" />
+                      <div className="w-0 h-6 border-l border-dashed border-[#B85E32]/50" />
+                    </div>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 8. FAQs Section: Kathiawadi Heritage Backdrop */}
+      <section
+        id="faqs"
+        className="relative pt-16 sm:pt-20 lg:pt-24 pb-20 sm:pb-28 lg:pb-36 overflow-hidden bg-[#F6E9CF]"
+      >
+        {/* Background container: Pure background only (no boxes, no cards around background) */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full background image 100% visible edge-to-edge */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/FAQ Background.png')",
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Dual-layer responsive framing so grandfather, palace, and green mountains remain fully visible */}
+          <div className="block lg:hidden w-full h-full bg-[#F6E9CF] relative">
+            {/* Top Atmospheric Art: Grandfather with Chai & Palace */}
+            <div
+              className="absolute top-0 left-0 w-full h-[280px] sm:h-[360px] pointer-events-none"
+              style={{
+                backgroundImage: "url('/assets/FAQ Background.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom Watercolor Mountain Landscape */}
+            <div
+              className="absolute bottom-0 left-0 w-full h-[100px] sm:h-[140px] pointer-events-none"
+              style={{
+                backgroundImage: "url('/assets/FAQ Background.png')",
+                backgroundPosition: 'center bottom',
+                backgroundSize: '100% auto',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Content Container */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+            
+            {/* Left Column: Eyebrow + FAQs Heading + Ornament (Floating in open space above palace, next to grandfather) */}
+            <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-center lg:pl-16 xl:pl-28">
+              {/* Eyebrow */}
+              <span className="text-xs sm:text-[13px] md:text-sm font-bold tracking-[0.22em] uppercase text-[#B85E32] mb-1.5 block font-sans">
+                FREQUENTLY ASKED QUESTIONS
+              </span>
+
+              {/* Heading */}
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#173F32] tracking-tight leading-none mb-1">
+                FAQs
+              </h2>
+
+              {/* Golden Center Ornament */}
+              <div className="flex items-center justify-center gap-2 text-[#C4923C] my-2">
+                <div className="w-10 sm:w-14 h-px bg-gradient-to-r from-transparent to-[#C4923C]" />
+                <span className="text-xs sm:text-sm font-serif">✦</span>
+                <div className="w-10 sm:w-14 h-px bg-gradient-to-l from-transparent to-[#C4923C]" />
+              </div>
+            </div>
+
+            {/* Right Column: 5 Accordion Cards in Off-White Parchment */}
+            <div className="lg:col-span-7 space-y-3 sm:space-y-3.5">
+              {homeFaqs.map((faq) => {
+                const isOpen = openFaq === faq.id;
+                return (
+                  <div
+                    key={faq.id}
+                    onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                    className="bg-[#FFFDF8]/90 hover:bg-[#FFFDF8] backdrop-blur-[2px] border border-[#E8D8C3] hover:border-[#C4923C]/60 rounded-2xl transition-all duration-300 shadow-[0_2px_8px_rgba(40,20,13,0.04)] hover:shadow-md cursor-pointer overflow-hidden"
+                  >
+                    <div className="px-5 sm:px-7 py-3.5 sm:py-4 flex items-center justify-between gap-4">
+                      <span className="font-serif font-bold text-sm sm:text-base text-[#1F140E] select-none">
+                        {faq.question}
+                      </span>
+                      <span className="text-xl sm:text-2xl font-light text-[#8C3A18] select-none shrink-0 transition-transform duration-300">
+                        {isOpen ? '−' : '+'}
+                      </span>
+                    </div>
+
+                    {isOpen && (
+                      <div className="px-5 sm:px-7 pb-4 sm:pb-5 pt-1 text-xs sm:text-sm text-[#5C4537] leading-relaxed border-t border-[#F2E5D3] animate-in fade-in duration-200">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
           </div>
         </div>
       </section>
+
+      {/* 9. Pre-Footer Royal Chai CTA Banner */}
+      <RoyalCtaBanner />
 
     </div>
   );

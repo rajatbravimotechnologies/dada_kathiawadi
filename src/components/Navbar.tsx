@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X, PhoneCall } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { HindiLogoWordmark } from './HindiLogoWordmark';
 
 interface NavbarProps {
   onEnquireClick?: () => void;
@@ -14,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 25);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -40,87 +41,89 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 pt-3 sm:pt-5 lg:pt-6 px-3 sm:px-6 lg:px-8 xl:px-10">
+      {/* Outer Floating Glass Capsule */}
       <div
-        className={`w-full transition-all duration-300 ${
+        className={`max-w-7xl mx-auto w-full pointer-events-auto rounded-[28px] sm:rounded-[36px] lg:rounded-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#180B05] shadow-2xl border-b border-[#EBB036]/30 py-2.5 sm:py-3'
-            : 'bg-transparent py-4 sm:py-6'
+            ? 'bg-[#FFF8EB]/92 backdrop-blur-[24px] border border-white/85 shadow-[0_16px_48px_rgba(24,11,5,0.22),0_4px_12px_rgba(24,11,5,0.10)] py-2 sm:py-2.5 lg:py-2.5 px-3.5 sm:px-6 lg:px-7'
+            : 'bg-[#FFF8EB]/82 backdrop-blur-[20px] border border-white/70 shadow-[0_12px_40px_rgba(24,11,5,0.16),0_2px_8px_rgba(24,11,5,0.06)] py-2.5 sm:py-3 lg:py-3.5 px-4 sm:px-6 lg:px-7'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Logo & Name on Left */}
+        <div className="flex items-center justify-between gap-3 lg:gap-4">
+          
+          {/* Brand Identity — Left Section */}
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-3 shrink-0 group"
+            className="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer"
             aria-label="Dada Kathiawadi Chai Home"
           >
             <img
               src="/assets/logo.png"
               alt="Dada Kathiawadi Chai Logo"
-              className="h-11 sm:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-md"
+              className="h-10 sm:h-12 lg:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
             />
-            <div className="flex flex-col text-left">
-              <span className="font-serif font-black text-base sm:text-lg leading-tight tracking-wide text-white group-hover:text-[#EBB036] transition-colors">
-                दादा काठियावाड़ी
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#EBB036] uppercase">
-                चाय • ESTD 2026
+            <div className="flex flex-col text-left justify-center">
+              <HindiLogoWordmark className="h-5.5 sm:h-6.5 lg:h-7.5 w-auto" idPrefix="nav" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-[#351B11]/85 uppercase mt-0.5">
+                चाय <span className="text-[#F4B62D] font-black">•</span> ESTD 2026
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links (Center / Right) */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-[13px] xl:text-[14px] font-medium">
+          {/* Center Navigation Pill — Desktop Only (>= 1024px) */}
+          <nav className="hidden lg:flex items-center bg-[#351B11] border border-[#5A2D1C]/40 rounded-full p-1.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] shrink-0">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative py-1 transition-colors whitespace-nowrap group ${
-                    isActive ? 'text-[#EBB036] font-bold' : 'text-white/90 hover:text-white'
+                  className={`relative flex flex-col items-center justify-center transition-all duration-200 whitespace-nowrap text-xs xl:text-[13px] ${
+                    isActive
+                      ? 'bg-[#FFF1D6] text-[#351B11] font-bold px-4 xl:px-5 py-1.5 xl:py-2 rounded-full shadow-sm'
+                      : 'text-[#FFF1D6]/85 hover:text-white font-medium px-3 xl:px-4 py-1.5 xl:py-2 rounded-full hover:bg-white/5'
                   }`}
                 >
                   <span>{link.name}</span>
-                  {/* Golden-yellow active link and hover underline */}
-                  <span
-                    className={`absolute bottom-0 left-0 right-0 h-0.5 bg-[#EBB036] rounded-full transition-all duration-200 ${
-                      isActive ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
-                    }`}
-                  />
+                  {/* Subtle Gold Indicator Dot under Active Item */}
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F4B62D] shadow-sm -mb-0.5 mt-0.5" />
+                  )}
                 </Link>
               );
             })}
-          </div>
+          </nav>
 
-          {/* Far Right: Get Franchise Button & Mobile Hamburger */}
+          {/* Right Section — Golden Franchise CTA & Mobile Toggle */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Desktop Golden Pill CTA Button */}
             <button
               onClick={handleEnquire}
-              className="flex items-center gap-2 bg-[#EBB036] hover:bg-[#dba12a] text-[#1E0E06] font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-2 bg-[#F4B62D] hover:bg-[#e2a420] text-[#1E0E06] font-bold text-xs sm:text-sm px-5 sm:px-6 xl:px-7 py-2.5 sm:py-3 rounded-full transition-all duration-200 shadow-[0_4px_16px_rgba(244,182,45,0.4)] hover:shadow-[0_6px_22px_rgba(244,182,45,0.55)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer"
             >
               <span>Get Franchise</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </button>
 
-            {/* Mobile hamburger menu button */}
+            {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-white/90 hover:text-white focus:outline-none rounded-full hover:bg-white/10"
+              className="lg:hidden p-2 sm:p-2.5 text-[#351B11] hover:text-[#1E0E06] bg-[#351B11]/5 hover:bg-[#351B11]/10 rounded-full transition-colors focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
+
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mx-3 sm:mx-6 mt-2 max-w-lg bg-[#180B05] border border-[#EBB036]/40 rounded-2xl p-5 shadow-2xl transition-all duration-200 animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col gap-3">
+        <div className="lg:hidden max-w-lg mx-auto mt-2 pointer-events-auto bg-[#FFF8EB]/95 backdrop-blur-[24px] border border-white/80 rounded-[28px] p-5 shadow-[0_20px_50px_rgba(24,11,5,0.25)] transition-all duration-200 animate-in fade-in slide-in-from-top-3">
+          <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
@@ -128,21 +131,35 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                     isActive
-                      ? 'bg-[#EBB036]/20 text-[#EBB036] font-bold border-l-2 border-[#EBB036]'
-                      : 'text-white/85 hover:bg-white/5 hover:text-white'
+                      ? 'bg-[#351B11] text-[#FFF1D6] shadow-sm'
+                      : 'text-[#351B11]/85 hover:bg-[#351B11]/10 hover:text-[#351B11]'
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {isActive && <span className="w-2 h-2 rounded-full bg-[#F4B62D]" />}
                 </Link>
               );
             })}
-            <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs text-white/80">
-              <span className="flex items-center gap-1.5">
-                <PhoneCall className="w-3.5 h-3.5 text-[#EBB036]" />
-                Franchise Helpline: +91 98765 43210
-              </span>
+
+            {/* Mobile Full-Width Golden CTA */}
+            <div className="pt-3 mt-1 border-t border-[#351B11]/10 flex flex-col gap-3">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleEnquire();
+                }}
+                className="w-full flex items-center justify-center gap-2 bg-[#F4B62D] hover:bg-[#e2a420] text-[#1E0E06] font-bold text-sm py-3 rounded-full shadow-[0_4px_16px_rgba(244,182,45,0.35)] transition-all cursor-pointer"
+              >
+                <span>Get Franchise</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </button>
+
+              <div className="flex items-center justify-center gap-1.5 text-xs text-[#351B11]/75">
+                <PhoneCall className="w-3.5 h-3.5 text-[#F4B62D]" />
+                <span>Helpline: +91 98765 43210</span>
+              </div>
             </div>
           </div>
         </div>
