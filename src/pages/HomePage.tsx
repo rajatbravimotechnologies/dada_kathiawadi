@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Hero } from '../components/Hero';
 import { FeatureStrip } from '../components/FeatureStrip';
 import { RoyalCtaBanner } from '../components/RoyalCtaBanner';
+import { LeadershipSection } from '../components/LeadershipSection';
 import {
   ArrowRight,
   Check,
@@ -201,6 +202,16 @@ export const HomePage: React.FC = () => {
       badge: 'Royal Special',
       notes: ['Pure Kashmiri Saffron', 'Roasted Almonds & Pistachio', 'Slow-Simmered Kadai Milk'],
     },
+    {
+      id: 'lemon-tea',
+      title: 'Desi Lemon Tea',
+      tag: 'ZESTY REFRESHMENT',
+      description:
+        'Slow-brewed Assam black tea infused with freshly squeezed sun-ripened lemons, organic mint leaves, and a touch of roasted rock salt. A tangy, revitalizing all-weather favorite.',
+      videoSrc: '/videos/lemon-tea.mp4',
+      badge: 'Customer Choice',
+      notes: ['Fresh Squeezed Citrus', 'Mint & Rock Salt Infusion', '100% Natural Rejuvenation'],
+    },
   ];
 
   return (
@@ -337,6 +348,9 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 3.5. Leadership / Owners Section: The People Behind the Parampara */}
+      <LeadershipSection />
 
       {/* 4. Signature Beverages: Vintage Illustrated Parchment Showcase */}
       <section

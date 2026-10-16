@@ -41,32 +41,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 pt-3 sm:pt-5 lg:pt-6 px-3 sm:px-6 lg:px-8 xl:px-10">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 pt-2.5 sm:pt-5 lg:pt-6 px-2.5 sm:px-6 lg:px-8 xl:px-10">
       {/* Outer Floating Glass Capsule */}
       <div
-        className={`max-w-7xl mx-auto w-full pointer-events-auto rounded-[28px] sm:rounded-[36px] lg:rounded-full transition-all duration-300 ${
+        className={`max-w-7xl mx-auto w-full pointer-events-auto rounded-[24px] sm:rounded-[36px] lg:rounded-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FFF8EB]/92 backdrop-blur-[24px] border border-white/85 shadow-[0_16px_48px_rgba(24,11,5,0.22),0_4px_12px_rgba(24,11,5,0.10)] py-2 sm:py-2.5 lg:py-2.5 px-3.5 sm:px-6 lg:px-7'
-            : 'bg-[#FFF8EB]/82 backdrop-blur-[20px] border border-white/70 shadow-[0_12px_40px_rgba(24,11,5,0.16),0_2px_8px_rgba(24,11,5,0.06)] py-2.5 sm:py-3 lg:py-3.5 px-4 sm:px-6 lg:px-7'
+            ? 'bg-[#FFF8EB]/92 backdrop-blur-[24px] border border-white/85 shadow-[0_16px_48px_rgba(24,11,5,0.22),0_4px_12px_rgba(24,11,5,0.10)] py-2 sm:py-2.5 lg:py-2.5 px-3 sm:px-5 lg:px-7'
+            : 'bg-[#FFF8EB]/82 backdrop-blur-[20px] border border-white/70 shadow-[0_12px_40px_rgba(24,11,5,0.16),0_2px_8px_rgba(24,11,5,0.06)] py-2 sm:py-3 lg:py-3.5 px-3 sm:px-5 lg:px-7'
         }`}
       >
-        <div className="flex items-center justify-between gap-3 lg:gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-3 lg:gap-4">
           
           {/* Brand Identity — Left Section */}
           <Link
             to="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2.5 sm:gap-3 shrink-0 group cursor-pointer"
+            className="flex items-center gap-2 sm:gap-3 shrink-0 group cursor-pointer"
             aria-label="Dada Kathiawadi Chai Home"
           >
             <img
               src="/assets/logo.png"
               alt="Dada Kathiawadi Chai Logo"
-              className="h-10 sm:h-12 lg:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
+              className="h-9 sm:h-12 lg:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
             />
             <div className="flex flex-col text-left justify-center">
-              <HindiLogoWordmark className="h-5.5 sm:h-6.5 lg:h-7.5 w-auto" idPrefix="nav" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-[#351B11]/85 uppercase mt-0.5">
+              <HindiLogoWordmark className="h-5 sm:h-6.5 lg:h-7.5 w-auto" idPrefix="nav" />
+              <span className="text-[9.5px] sm:text-[11px] font-bold tracking-[0.16em] text-[#351B11]/85 uppercase mt-0.5">
                 चाय <span className="text-[#F4B62D] font-black">•</span> ESTD 2026
               </span>
             </div>
@@ -97,20 +97,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onEnquireClick }) => {
           </nav>
 
           {/* Right Section — Golden Franchise CTA & Mobile Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Desktop Golden Pill CTA Button */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 lg:gap-3 shrink-0">
+            {/* Golden Pill CTA Button (Visible on Both Mobile & Desktop) */}
             <button
               onClick={handleEnquire}
-              className="hidden sm:inline-flex items-center gap-2 bg-[#F4B62D] hover:bg-[#e2a420] text-[#1E0E06] font-bold text-xs sm:text-sm px-5 sm:px-6 xl:px-7 py-2.5 sm:py-3 rounded-full transition-all duration-200 shadow-[0_4px_16px_rgba(244,182,45,0.4)] hover:shadow-[0_6px_22px_rgba(244,182,45,0.55)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer"
+              className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#F4B62D] hover:bg-[#e2a420] text-[#1E0E06] font-bold text-[11px] sm:text-xs lg:text-sm px-3 sm:px-5 lg:px-6 xl:px-7 py-1.5 sm:py-2.5 lg:py-3 rounded-full transition-all duration-200 shadow-[0_4px_16px_rgba(244,182,45,0.4)] hover:shadow-[0_6px_22px_rgba(244,182,45,0.55)] hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap cursor-pointer shrink-0"
             >
               <span>Get Franchise</span>
-              <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
+              <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[3]" />
             </button>
 
             {/* Mobile Hamburger Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 sm:p-2.5 text-[#351B11] hover:text-[#1E0E06] bg-[#351B11]/5 hover:bg-[#351B11]/10 rounded-full transition-colors focus:outline-none"
+              className="lg:hidden p-1.5 sm:p-2.5 text-[#351B11] hover:text-[#1E0E06] bg-[#351B11]/5 hover:bg-[#351B11]/10 rounded-full transition-colors focus:outline-none shrink-0"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}

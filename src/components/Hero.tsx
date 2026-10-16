@@ -65,15 +65,22 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onEnquireClick }) =>
             <span>Asli Swad, Desi Andaaz</span>
           </div>
 
-          {/* Main Headline: "Har Cup Mein Kathiyawad" */}
-          <h1 className="animate-hero-2 font-serif font-black text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] leading-[1.04] tracking-tight drop-shadow-lg mb-4 sm:mb-5">
-            <span className="block text-white">Har Cup Mein</span>
-            <span className="block text-[#EBB036] relative mt-1">
-              Kathiyawad
+          {/* Main Headline: Premium Clean Modern Hindi Typography */}
+          <h1
+            className="animate-hero-2 font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] xl:text-[4.25rem] leading-[1.18] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] mb-4 sm:mb-5 select-none"
+            style={{ fontFamily: "'Baloo 2', sans-serif" }}
+          >
+            <span className="block text-white font-extrabold tracking-normal drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+              एक घूंट...
+            </span>
+            <span className="block relative mt-1 sm:mt-1.5 font-extrabold tracking-normal">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5B8] via-[#FFC928] to-[#F5A900] drop-shadow-[0_2px_12px_rgba(245,169,0,0.35)]">
+                काठियावाड़ की याद
+              </span>
               {/* Decorative brush underline */}
               <svg
                 viewBox="0 0 280 16"
-                className="w-40 sm:w-56 lg:w-60 h-3 sm:h-4 text-[#EBB036] mt-1"
+                className="w-48 sm:w-64 lg:w-72 h-3 sm:h-4 text-[#F4B62D] mt-1"
                 fill="currentColor"
                 aria-hidden="true"
               >
