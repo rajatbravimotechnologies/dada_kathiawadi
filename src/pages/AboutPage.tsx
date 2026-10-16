@@ -11,38 +11,47 @@ export const AboutPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* 1. TOP HERO SECTION: ABOUT US & OUR HERITAGE                             */}
       {/* Background: Sepia Riverfront Heritage Panorama                            */}
-      {/* Same implementation as Home Page Hero for Mobile & Desktop                */}
+      {/* Same implementation as Home Page & Franchise Page for Mobile & Desktop    */}
       {/* ========================================================================= */}
       <section className="relative overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-14 sm:pb-20 lg:pb-24">
-        {/* Background Image Container — Matching Home Page Hero */}
+        {/* Background Image Container — Matching Home Page & Franchise Page Heritage Framing */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          {/* Desktop Background (Screens >= 640px / sm) */}
-          {/* Full-width, full-height edge-to-edge background matching desktop screenshot */}
+          {/* Desktop & Laptop (lg+): Full edge-to-edge panoramic heritage artwork */}
           <div
-            className="hidden sm:block w-full h-full"
+            className="hidden lg:block w-full h-full"
             style={{
               backgroundImage: "url('/assets/Sepia Riverfront Heritage Panorama.png')",
-              backgroundSize: '100% 100%',
+              backgroundSize: 'cover',
               backgroundPosition: 'center center',
               backgroundRepeat: 'no-repeat',
             }}
           />
 
-          {/* Mobile Background (Screens < 640px) — Exact same approach as Home Page Hero */}
-          {/* Full width so the complete scene (palaces on left & right, river, foliage) is 100% visible */}
-          <div className="block sm:hidden w-full relative bg-[#FAF3E3]">
-            <img
-              src="/assets/Sepia Riverfront Heritage Panorama.png"
-              alt="Dada Kathiawadi Heritage Lake Palace Panorama"
-              className="w-full h-auto object-cover object-top"
-              loading="eager"
-            />
-            {/* Natural atmospheric gradient fading the bottom of the scenic artwork into #FAF3E3 */}
+          {/* Mobile & Tablet (< lg): Responsive Heritage Artwork Framing */}
+          <div className="block lg:hidden w-full h-full bg-[#FAF3E3] relative">
+            {/* Top-Left: Heritage Palaces & Foliage */}
             <div
-              className="absolute inset-0 pointer-events-none"
+              className="absolute top-0 left-0 w-full h-[320px] sm:h-[420px] pointer-events-none opacity-90"
               style={{
-                background:
-                  'linear-gradient(180deg, rgba(250, 243, 227, 0.05) 0%, transparent 35%, rgba(250, 243, 227, 0.55) 70%, #FAF3E3 100%)',
+                backgroundImage: "url('/assets/Sepia Riverfront Heritage Panorama.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom-Right: Riverfront Palaces & Boats */}
+            <div
+              className="absolute bottom-0 right-0 w-full h-[360px] sm:h-[460px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/Sepia Riverfront Heritage Panorama.png')",
+                backgroundPosition: 'right bottom',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
               }}
             />
           </div>
@@ -81,9 +90,53 @@ export const AboutPage: React.FC = () => {
 
       {/* ========================================================================= */}
       {/* 2. SECTION 2: OUR ROOTS & TRADITION                                       */}
-      {/* Dedicated standalone section ready for its own background image           */}
+      {/* Background: Rustic Heritage Chai Parchment Background.png                 */}
+      {/* Desktop (cover) & Mobile (Dual-Layer Responsive Heritage Framing)          */}
       {/* ========================================================================= */}
       <section className="relative overflow-hidden py-14 sm:py-20 lg:py-24">
+        {/* Background Image Container — Matching Home Page & Franchise Page Heritage Framing */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Desktop & Laptop (lg+): Full edge-to-edge panoramic heritage artwork */}
+          <div
+            className="hidden lg:block w-full h-full"
+            style={{
+              backgroundImage: "url('/assets/Rustic Heritage Chai Parchment Background.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+
+          {/* Mobile & Tablet (< lg): Responsive Heritage Artwork Framing */}
+          {/* Guarantees 100% of illustrated elements (lake palace, trees, windmill, spices, kulhad) are visible */}
+          <div className="block lg:hidden w-full h-full bg-[#FAF3E3] relative">
+            {/* Top-Left: Heritage Lake Palace, Ghats & Trees */}
+            <div
+              className="absolute top-0 left-0 w-full h-[320px] sm:h-[420px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/Rustic Heritage Chai Parchment Background.png')",
+                backgroundPosition: 'left top',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+              }}
+            />
+
+            {/* Bottom-Right: Windmill, Palatial Dome & Steaming Kulhad Chai with Ginger & Cinnamon */}
+            <div
+              className="absolute bottom-0 right-0 w-full h-[360px] sm:h-[460px] pointer-events-none opacity-90"
+              style={{
+                backgroundImage: "url('/assets/Rustic Heritage Chai Parchment Background.png')",
+                backgroundPosition: 'right bottom',
+                backgroundSize: 'auto 100%',
+                backgroundRepeat: 'no-repeat',
+                maskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 50%, transparent 100%)',
+              }}
+            />
+          </div>
+        </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center max-w-5xl mx-auto">
             {/* Left Column: Traditional Chai Preparation Photograph */}
@@ -130,22 +183,18 @@ export const AboutPage: React.FC = () => {
 
       {/* ========================================================================= */}
       {/* 3. SECTION 3: THE PEOPLE BEHIND THE PARAMPARA                             */}
-      {/* Dedicated standalone section ready for its own background image           */}
+      {/* Background: FAQ Background - copy.png                                     */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <LeadershipSection
-            showBackground={false}
-            className="pt-0 pb-0"
-          />
-        </div>
-      </section>
+      <LeadershipSection
+        showBackground={true}
+        backgroundImage="/assets/FAQ Background - copy.png"
+      />
 
       {/* ========================================================================= */}
       {/* 4. SECTION 4: WHAT SETS DADA KATHIAWADI APART                             */}
-      {/* Dedicated standalone section ready for its own background image           */}
+      {/* Background: #FDF0DC                                                       */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden py-12 sm:py-16">
+      <section className="relative overflow-hidden py-14 sm:py-20 bg-[#FDF0DC]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-10">
             <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#174635] mb-2">
@@ -198,19 +247,37 @@ export const AboutPage: React.FC = () => {
 
       {/* ========================================================================= */}
       {/* 5. SECTION 5: ROYAL CTA BANNER — "START YOUR BUSINESS WITH US TODAY"      */}
+      {/* Background: Royal Indian Chai Still Life.png inside card, #FDF0DC outside */}
       {/* ========================================================================= */}
-      <section className="relative overflow-hidden pt-4 pb-20 sm:pb-24">
+      <section className="relative overflow-hidden py-14 sm:py-20 bg-[#FDF0DC]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="bg-[#0E3326] rounded-2xl sm:rounded-3xl p-8 sm:p-12 relative overflow-hidden text-white shadow-2xl border border-[#E5AA36]/40">
-            {/* Subtle scenic palace silhouette background watermark */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-20"
-              style={{
-                backgroundImage: "url('/assets/heritage-chai-parchment-bg.png')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            />
+            {/* Background Image Container inside Royal Green Card */}
+            <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+              {/* Desktop & Tablet Background */}
+              <div
+                className="hidden sm:block w-full h-full opacity-85"
+                style={{
+                  backgroundImage: "url('/assets/Royal Indian Chai Still Life.png')",
+                  backgroundSize: '100% 100%',
+                  backgroundPosition: 'center center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+
+              {/* Mobile Background */}
+              <div className="block sm:hidden w-full h-full relative bg-[#0E3326]">
+                <div
+                  className="absolute inset-0 opacity-80"
+                  style={{
+                    backgroundImage: "url('/assets/Royal Indian Chai Still Life.png')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+              </div>
+            </div>
 
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 text-center md:text-left">
               {/* Kulhad Chai Illustration / Miniature on Left */}
